@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    model.aibrix.ai/name: deepseek-r1-distill-llama-8b 
+    model.aibrix.ai/port: "8000"
+  name: deepseek-r1-distill-llama-8b
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      model.aibrix.ai/name: deepseek-r1-distill-llama-8b
+      model.aibrix.ai/port: "8000"
+  template:
+    metadata:
+      labels:
+        model.aibrix.ai/name: deepseek-r1-distill-llama-8b
+        model.aibrix.ai/port: "8000"
+    spec:
+      containers:
+      - command:
+        - vllm
+        - serve
+        - --host
+        - "0.0.0.0"
+        - --port
+        - "8000"
+        - --uvicorn-log-level
+        - warning
+        - --model
+        - deepseek-ai/DeepSeek-R1-Distill-Llama-8B
+        - --served-model-name
+        - deepseek-r1-distill-llama-8b
+        - --max-model-len
+        - "12288" 
+        image: vllm/vllm-openai:v0.11.0
