@@ -19,7 +19,8 @@ spec:
         model.aibrix.ai/port: "8000"
     spec:
       containers:
-      - command:
+      - name: vllm-container
+        command:
         - vllm
         - serve
         - --host
