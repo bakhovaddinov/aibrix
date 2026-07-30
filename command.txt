@@ -1,73 +1,47 @@
-curl -v http://localhost:31753/v1/chat/completions \
-  -H "routing-strategy: pd" \
-  -H "Content-Type: application/json" \
-  -d '{ 
-        "model": "deepseek-r1-distill-llama-8b", 
-        "messages": [{"role": "user", "content": "Write a short test sentence."}] 
-      }'
-(base) [root@m1 aibrix]# kubectl -n envoy-gateway-system port-forward service/envoy-aibrix-system-aibrix-eg-903790dc 8888:80 &ENDPOINT="localhost:8888"
-[1] 3265625
-(base) [root@m1 aibrix]# Forwarding from 127.0.0.1:8888 -> 10080
-Forwarding from [::1]:8888 -> 10080
-(base) [root@m1 aibrix]# curl -v http://${ENDPOINT}/v1/completions \
->     -H "Content-Type: application/json" \
->     -H "routing-strategy: random" \
->     -d '{
->         "model": "deepseek-r1-distill-llama-8b",
->         "prompt": "San Francisco is a",
->         "max_tokens": 128,
->         "temperature": 0
->     }'
-*   Trying 127.0.0.1:8888...
-* Connected to localhost (127.0.0.1) port 8888 (#0)
-> POST /v1/completions HTTP/1.1
-> Host: localhost:8888
-> User-Agent: curl/7.79.1
-> Accept: */*
-> Content-Type: application/json
-> routing-strategy: random
-> Content-Length: 148
-> 
-Handling connection for 8888
-* Mark bundle as not supporting multiuse
-< HTTP/1.1 503 Service Unavailable
-< x-error-no-model-backends: true
-< content-type: 
-< content-length: 152
-< date: Mon, 27 Jul 2026 13:28:25 GMT
-< 
-* Connection #0 to host localhost left intact
-{"error":{"code":"service_unavailable","param":null,"message":"error on getting pods for model deepseek-r1-distill-llama-8b","type":"overloaded_error"}}(base) [root@m1 aibrix]# Handling connection for 8888
-^C
-(base) [root@m1 aibrix]# ^C
-(base) [root@m1 aibrix]# ^C
-(base) [root@m1 aibrix]# curl -v http://${ENDPOINT}/v1/models/
-*   Trying 127.0.0.1:8888...
-* Connected to localhost (127.0.0.1) port 8888 (#0)
-> GET /v1/models/ HTTP/1.1
-> Host: localhost:8888
-> User-Agent: curl/7.79.1
-> Accept: */*
-> 
-Handling connection for 8888
-* Mark bundle as not supporting multiuse
-< HTTP/1.1 200 OK
-< date: Mon, 27 Jul 2026 13:29:31 GMT
-< server: uvicorn
-< content-length: 113
-< content-type: application/json
-< 
-* Connection #0 to host localhost left intact
-{"object":"list","data":[{"id":"deepseek-r1-distill-llama-8b","created":0,"object":"model","owned_by":"aibrix"}]}(base) [root@m1 aibrix]# curl http://${ENDPOINT}/v1/chat/completions \
-> -H "Content-Type: application/json" \
-> -H "routing-strategy: random" \
-> -d '{
->     "model": "deepseek-r1-distill-llama-8b",
->     "messages": [
->         {"role": "system", "content": "You are a helpful assistant."},
->         {"role": "user", "content": "help me write a random generator in python"}
->     ]
-> }'
-Handling connection for 8888
-{"error":{"param":null,"message":"error on getting pods for model deepseek-r1-distill-llama-8b","type":"overloaded_error","code":"service_unavailable"}}(base) [root@m1 aibrix]# :wq
-
+ => ERROR [2/3] RUN apt-get update && apt-get install -y tmux                                                                                                                                               7.2s
+------
+ > [2/3] RUN apt-get update && apt-get install -y tmux:
+0.057 Incorrect Usage: flag provided but not defined: -keep
+0.057
+0.057 NAME:
+0.057    runc run - create and run a container
+0.057
+0.057 USAGE:
+0.057    runc run [command options] <container-id>
+0.057
+0.057 Where "<container-id>" is your name for the instance of the container that you
+0.057 are starting. The name you provide for the container instance must be unique on
+0.057 your host.
+0.057
+0.057 DESCRIPTION:
+0.057    The run command creates an instance of a container for a bundle. The bundle
+0.057 is a directory with a specification file named "config.json" and a root
+0.057 filesystem.
+0.057
+0.057 The specification file includes an args parameter. The args parameter is used
+0.057 to specify command(s) that get run when the container is started. To change the
+0.057 command(s) that get executed on start, edit the args parameter of the spec. See
+0.057 "runc spec --help" for more explanation.
+0.057
+0.057 OPTIONS:
+0.057    --bundle value, -b value  path to the root of the bundle directory, defaults to the current directory
+0.057    --console-socket value    path to an AF_UNIX socket which will receive a file descriptor referencing the master end of the console's pseudoterminal
+0.057    --detach, -d              detach from the container's process
+0.057    --pid-file value          specify the file to write the process id to
+0.057    --no-subreaper            disable the use of the subreaper used to reap reparented processes
+0.057    --no-pivot                do not use pivot root to jail process inside rootfs.  This should be used whenever the rootfs is on top of a ramdisk
+0.057    --no-new-keyring          do not create a new session keyring for the container.  This will cause the container to inherit the calling processes session key
+0.057    --preserve-fds value      Pass N additional file descriptors to the container (stdio + $LISTEN_FDS + N in total) (default: 0)
+0.057
+0.060 flag provided but not defined: -keep
+------
+Dockerfile:3
+--------------------
+   1 |     FROM quay.io/ascend/vllm-ascend:v0.18.0
+   2 |
+   3 | >>> RUN apt-get update && apt-get install -y tmux
+   4 |     RUN pip install openyuanrong-transfer-engine
+   5 |
+--------------------
+error: failed to solve: process "/bin/bash -c apt-get update && apt-get install -y tmux" did not complete successfully: exit code: 1
+FATA[0170] no image was built
