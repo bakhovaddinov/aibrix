@@ -19,7 +19,8 @@ spec:
       nodeName: m1  # Force deployment to single node (change to n1 if needed)
       containers:
       - name: vllm-npu
-        image: docker.io/library/vllm-ascend-custom:latest  # Use your local Ascend-compiled vLLM image
+        image: docker.io/library/vllm-ascend-custom:latest 
+        imagePullPolicy: Never
         command:
         - python3
         - -m
