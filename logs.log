@@ -1,0 +1,39 @@
+[1] prefill (Order=nil)
+I0813 13:21:38.146002       1 rolling.go:78] [RollingManagerSequential.Next] start to rollout roleset default/default-qwen25-roleset-dqzj5 role prefill
+I0813 13:21:38.146292       1 rolesyncer.go:176] [StatefulRoleSyncer.Rollout] roleset default/default-qwen25-roleset-dqzj5 role prefill expectedReplicas 1, deleteBudget 0, createBudget 0, template hash f96bd6
+I0813 13:21:38.146304       1 rolesyncer.go:364] roleset default/default-qwen25-roleset-dqzj5 role prefill, toCreate [], toDelete []
+I0813 13:21:38.146356       1 rolling.go:87] [RollingManagerSequential.Next] waiting for roleset default/default-qwen25-roleset-dqzj5 role prefill's rollout process to be finished
+I0813 13:21:38.146598       1 roleset_controller.go:156] roleset default/default-qwen25-roleset-dqzj5 not ready, reconcile after 1s seconds
+I0813 13:21:39.147049       1 roleset_controller.go:110] Reconciling RoleSet default/default-qwen25-roleset-dqzj5
+I0813 13:21:39.147158       1 rolling.go:45] [RollingManagerSequential.Next] start to scale roleset default/default-qwen25-roleset-dqzj5 role prefill
+I0813 13:21:39.147320       1 rolesyncer.go:364] roleset default/default-qwen25-roleset-dqzj5 role prefill, toCreate [], toDelete []
+I0813 13:21:39.147336       1 rolling.go:58] [RollingManagerSequential.Next] sorting roleset roles by UpgradeOrder
+I0813 13:21:39.147352       1 rolling.go:71] [RollingManagerSequential.Next] Upgrade sequence for default/default-qwen25-roleset-dqzj5:
+[1] prefill (Order=nil)
+I0813 13:21:39.147362       1 rolling.go:78] [RollingManagerSequential.Next] start to rollout roleset default/default-qwen25-roleset-dqzj5 role prefill
+I0813 13:21:39.147652       1 rolesyncer.go:176] [StatefulRoleSyncer.Rollout] roleset default/default-qwen25-roleset-dqzj5 role prefill expectedReplicas 1, deleteBudget 0, createBudget 0, template hash f96bd6
+I0813 13:21:39.147665       1 rolesyncer.go:364] roleset default/default-qwen25-roleset-dqzj5 role prefill, toCreate [], toDelete []
+I0813 13:21:39.147716       1 rolling.go:87] [RollingManagerSequential.Next] waiting for roleset default/default-qwen25-roleset-dqzj5 role prefill's rollout process to be finished
+I0813 13:21:39.147946       1 roleset_controller.go:156] roleset default/default-qwen25-roleset-dqzj5 not ready, reconcile after 1s seconds
+I0813 13:21:40.148437       1 roleset_controller.go:110] Reconciling RoleSet default/default-qwen25-roleset-dqzj5
+I0813 13:21:40.148591       1 rolling.go:45] [RollingManagerSequential.Next] start to scale roleset default/default-qwen25-roleset-dqzj5 role prefill
+I0813 13:21:40.148796       1 rolesyncer.go:364] roleset default/default-qwen25-roleset-dqzj5 role prefill, toCreate [], toDelete []
+I0813 13:21:40.148817       1 rolling.go:58] [RollingManagerSequential.Next] sorting roleset roles by UpgradeOrder
+I0813 13:21:40.148837       1 rolling.go:71] [RollingManagerSequential.Next] Upgrade sequence for default/default-qwen25-roleset-dqzj5:
+[1] prefill (Order=nil)
+I0813 13:21:40.148850       1 rolling.go:78] [RollingManagerSequential.Next] start to rollout roleset default/default-qwen25-roleset-dqzj5 role prefill
+I0813 13:21:40.149206       1 rolesyncer.go:176] [StatefulRoleSyncer.Rollout] roleset default/default-qwen25-roleset-dqzj5 role prefill expectedReplicas 1, deleteBudget 0, createBudget 0, template hash f96bd6
+I0813 13:21:40.149223       1 rolesyncer.go:364] roleset default/default-qwen25-roleset-dqzj5 role prefill, toCreate [], toDelete []
+I0813 13:21:40.149285       1 rolling.go:87] [RollingManagerSequential.Next] waiting for roleset default/default-qwen25-roleset-dqzj5 role prefill's rollout process to be finished
+I0813 13:21:40.149560       1 roleset_controller.go:156] roleset default/default-qwen25-roleset-dqzj5 not ready, reconcile after 1s seconds
+I0813 13:21:41.150606       1 roleset_controller.go:110] Reconciling RoleSet default/default-qwen25-roleset-dqzj5
+I0813 13:21:41.150713       1 rolling.go:45] [RollingManagerSequential.Next] start to scale roleset default/default-qwen25-roleset-dqzj5 role prefill
+I0813 13:21:41.150875       1 rolesyncer.go:364] roleset default/default-qwen25-roleset-dqzj5 role prefill, toCreate [], toDelete []
+I0813 13:21:41.150891       1 rolling.go:58] [RollingManagerSequential.Next] sorting roleset roles by UpgradeOrder
+I0813 13:21:41.150906       1 rolling.go:71] [RollingManagerSequential.Next] Upgrade sequence for default/default-qwen25-roleset-dqzj5:
+[1] prefill (Order=nil)
+I0813 13:21:41.150915       1 rolling.go:78] [RollingManagerSequential.Next] start to rollout roleset default/default-qwen25-roleset-dqzj5 role prefill
+I0813 13:21:41.151217       1 rolesyncer.go:176] [StatefulRoleSyncer.Rollout] roleset default/default-qwen25-roleset-dqzj5 role prefill expectedReplicas 1, deleteBudget 0, createBudget 0, template hash f96bd6
+I0813 13:21:41.151231       1 rolesyncer.go:364] roleset default/default-qwen25-roleset-dqzj5 role prefill, toCreate [], toDelete []
+I0813 13:21:41.151279       1 rolling.go:87] [RollingManagerSequential.Next] waiting for roleset default/default-qwen25-roleset-dqzj5 role prefill's rollout process to be finished
+I0813 13:21:41.151517       1 roleset_controller.go:156] roleset default/default-qwen25-roleset-dqzj5 not ready, reconcile after 1s seconds
