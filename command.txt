@@ -1,12 +1,7 @@
-curl -v http://localhost:8888/v1/chat/completions \
+curl http://localhost:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
-  -H "user: test-user" \
-  -H "model: qwen2-7b" \
   -d '{
-    "model": "qwen2-7b",
-    "messages": [
-      {"role": "user", "content": "Explain integer linear programming in one sentence."}
-    ],
-    "max_tokens": 128,
-    "temperature": 0.7
+    "model": "Qwen/Qwen2-7B-Instruct",
+    "messages": [{"role": "user", "content": "Hello!"}],
+    "max_tokens": 32
   }'
