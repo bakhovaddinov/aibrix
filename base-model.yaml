@@ -21,6 +21,7 @@ spec:
       - name: vllm-npu
         image: docker.io/library/vllm-ascend-custom:latest 
         imagePullPolicy: Never
+        env:
         - name: LD_LIBRARY_PATH
           value: "/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver"
         command:
