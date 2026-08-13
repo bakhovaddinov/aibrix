@@ -16,10 +16,10 @@ spec:
       labels:
         model.aibrix.ai/name: qwen2-7b
     spec:
-      nodeName: m1  # Force deployment to single node (change to n1 if needed)
+      nodeName: m1
       containers:
       - name: vllm-npu
-        image: docker.io/library/vllm-ascend-custom:latest 
+        image: docker.io/library/vllm-ascend-custom:latest
         imagePullPolicy: Never
         env:
         - name: LD_LIBRARY_PATH
@@ -36,3 +36,11 @@ spec:
         resources:
           limits:
             huawei.com/Ascend910: "1"
+        volumeMounts:
+        - name: ascend-driver
+          mountPath: /usr/local/Ascend/driver
+          readOnly: true
+      volumes:
+      - name: ascend-driver
+        hostPath:
+          path: /usr/local/Ascend/driver
