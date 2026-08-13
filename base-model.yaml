@@ -21,18 +21,23 @@ spec:
       - name: vllm-npu
         image: docker.io/library/vllm-ascend-custom:latest
         imagePullPolicy: Never
-        env:
-        - name: LD_LIBRARY_PATH
-          value: "/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver"
-        command:
-        - python3
-        - -m
-        - vllm.entrypoints.openai.api_server
-        - --host
-        - "0.0.0.0"
-        - --model
-        - "Qwen/Qwen2-7B-Instruct"
-        - --trust-remote-code
+        # Use a bash wrapper to inject paths without destroying existing ones
+        command: ["/bin/bash", "-c"]
+        args:
+        - |
+          # Source CANN toolkit variables
+          if [ -f /usr/local/Ascend/ascend-toolkit/set_env.sh ]; then
+            source /usr/local/Ascend/ascend-toolkit/set_env.sh
+          fi
+          
+          # Append the host driver paths to the container's existing library path
+          export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver
+          
+          # Start the server
+          python3 -m vllm.entrypoints.openai.api_server \
+            --host 0.0.0.0 \
+            --model Qwen/Qwen2-7B-Instruct \
+            --trust-remote-code
         resources:
           limits:
             huawei.com/Ascend910: "1"
