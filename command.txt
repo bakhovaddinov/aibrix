@@ -16,3 +16,13 @@ curl http://localhost:8008/v1/chat/completions \
     "max_tokens": 50,
     "temperature": 0.7
   }'
+curl http://localhost:8008/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "Qwen-2.5-0.5B",
+    "messages": [
+      {"role": "user", "content": "Write a detailed, 5-paragraph sci-fi story about a software engineer who discovers their AI orchestrator has become sentient."}
+    ],
+    "max_tokens": 1000,
+    "temperature": 0.7
+  }'

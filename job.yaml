@@ -32,7 +32,7 @@ spec:
               schedulerName: default-scheduler
               containers:
                 - name: prefill
-                  image: quay.io/ascend/vllm-ascend:v0.11.0rc1-a3
+                  image: quay.io/ascend/vllm-ascend:v0.11.0rc1
                   command: ["/bin/bash","-c"]
                   args:
                     - |
