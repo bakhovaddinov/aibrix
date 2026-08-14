@@ -1,0 +1,87 @@
+apiVersion: orchestration.aibrix.ai/v1alpha1
+kind: StormService
+metadata:
+  name: default-qwen25
+  namespace: default
+spec:
+  replicas: 1
+  updateStrategy:
+    type: InPlaceUpdate
+  stateful: true
+  selector:
+    matchLabels:
+      app: default-qwen25
+  template:
+    metadata:
+      labels:
+        app: default-qwen25
+        component: vllm-inference
+    spec:
+      roles:
+        - name: prefill
+          replicas: 1
+          podGroupSize: 1
+          stateful: true
+          template:
+            metadata:
+              labels:
+                model.aibrix.ai/name: Qwen-2.5-7B-Instruct
+                model.aibrix.ai/port: "8008"
+                model.aibrix.ai/engine: vllm
+            spec:
+              schedulerName: default-scheduler
+              containers:
+                - name: prefill
+                  image: quay.io/ascend/vllm-ascend:v0.11.0rc1
+                  command: ["/bin/bash","-c"]
+                  args:
+                    - |
+                      vllm serve Qwen/Qwen2.5-7B-Instruct \
+                      --host 0.0.0.0 \
+                      --port 8008 \
+                      --tensor-parallel-size 2 \
+                      --served-model-name Qwen-2.5-7B-Instruct \
+                      --trust-remote-code \
+                      --max-model-len 32768
+                  resources:
+                    limits:
+                      huawei.com/Ascend910: "2"
+                    requests:
+                      huawei.com/Ascend910: "2"
+                  volumeMounts:
+                    - name: ascend-drivers
+                      mountPath: /usr/local/Ascend/driver
+                    - name: localtime
+                      mountPath: /etc/localtime
+                    - name: data
+                      mountPath: /data
+                    - name: home
+                      mountPath: /home
+                    - name: reset-config
+                      mountPath: /user/restore/reset/config
+                    - name: ranktable
+                      mountPath: /user/mindx-dl/ranktable
+                    - name: dshm
+                      mountPath: /dev/shm
+              volumes:
+                - name: home
+                  hostPath:
+                    path: /home
+                - name: data
+                  hostPath:
+                    path: /data
+                - name: ascend-drivers
+                  hostPath:
+                    path: /usr/local/Ascend/driver
+                - name: localtime
+                  hostPath:
+                    path: /etc/localtime
+                - name: reset-config
+                  hostPath:
+                    path: /user/restore/reset/default.reset-config-default-qwen25
+                - name: ranktable
+                  hostPath:
+                    path: /user/mindx-dl/ranktable/default.default-qwen25
+                - name: dshm
+                  emptyDir:
+                    medium: Memory
