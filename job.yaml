@@ -29,16 +29,14 @@ spec:
                 model.aibrix.ai/port: "8008"
                 model.aibrix.ai/engine: vllm
             spec:
-              nodeSelector:
-                accelerator-type: module-a3-16
-              schedulerName: volcano
+              schedulerName: default-scheduler
               containers:
                 - name: prefill
                   image: quay.io/ascend/vllm-ascend:v0.11.0rc1-a3
                   command: ["/bin/bash","-c"]
                   args:
                     - |
-                      vllm serve Qwen-2.5-0.5B \
+                      vllm serve Qwen/Qwen2.5-0.5B \
                       --host 0.0.0.0 \
                       --port 8008 \
                       --tensor-parallel-size 2 \
@@ -47,9 +45,9 @@ spec:
                       --max-model-len 32768
                   resources:
                     limits:
-                      huawei.com/Ascend910: "1"
+                      huawei.com/Ascend910: "2"
                     requests:
-                      huawei.com/Ascend910: "1"
+                      huawei.com/Ascend910: "2"
                   volumeMounts:
                     - name: ascend-drivers
                       mountPath: /usr/local/Ascend/driver
