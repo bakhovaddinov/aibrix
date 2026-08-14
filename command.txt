@@ -26,3 +26,13 @@ curl http://localhost:8008/v1/chat/completions \
     "max_tokens": 1000,
     "temperature": 0.7
   }'
+curl http://localhost:8008/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "Qwen-2.5-7B-Instruct",
+    "messages": [
+      {"role": "user", "content": "Explain how distributed tensor parallelism works in 3 clear bullet points."}
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+  }'
