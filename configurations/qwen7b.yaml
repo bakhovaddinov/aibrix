@@ -1,7 +1,7 @@
 apiVersion: orchestration.aibrix.ai/v1alpha1
 kind: StormService
 metadata:
-  name: default-qwen25
+  name: qwen257
   namespace: default
 spec:
   replicas: 1
@@ -10,11 +10,11 @@ spec:
   stateful: true
   selector:
     matchLabels:
-      app: default-qwen25
+      app: qwen257
   template:
     metadata:
       labels:
-        app: default-qwen25
+        app: qwen257
         component: vllm-inference
     spec:
       roles:
@@ -25,7 +25,7 @@ spec:
           template:
             metadata:
               labels:
-                model.aibrix.ai/name: Qwen-2.5-0.5B
+                model.aibrix.ai/name: Qwen-2.5-7B-Instruct
                 model.aibrix.ai/port: "8008"
                 model.aibrix.ai/engine: vllm
             spec:
@@ -36,11 +36,11 @@ spec:
                   command: ["/bin/bash","-c"]
                   args:
                     - |
-                      vllm serve Qwen/Qwen2.5-0.5B \
+                      vllm serve Qwen/Qwen2.5-7B-Instruct \
                       --host 0.0.0.0 \
                       --port 8008 \
                       --tensor-parallel-size 2 \
-                      --served-model-name Qwen-2.5-0.5B \
+                      --served-model-name Qwen-2.5-7B-Instruct \
                       --trust-remote-code \
                       --max-model-len 32768
                   resources:
@@ -61,6 +61,8 @@ spec:
                       mountPath: /user/restore/reset/config
                     - name: ranktable
                       mountPath: /user/mindx-dl/ranktable
+                    - name: dshm
+                      mountPath: /dev/shm
               volumes:
                 - name: home
                   hostPath:
@@ -76,7 +78,10 @@ spec:
                     path: /etc/localtime
                 - name: reset-config
                   hostPath:
-                    path: /user/restore/reset/default.reset-config-default-qwen25
+                    path: /user/restore/reset/default.reset-config-qwen257
                 - name: ranktable
                   hostPath:
-                    path: /user/mindx-dl/ranktable/default.default-qwen25
+                    path: /user/mindx-dl/ranktable/default.qwen257
+                - name: dshm
+                  emptyDir:
+                    medium: Memory

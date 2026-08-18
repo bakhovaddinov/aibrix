@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: npu-exporter-monitor
+  namespace: monitoring
+  labels:
+    release: prometheus 
+spec:
+  selector:
+    matchLabels:
+      app: npu-exporter # <--- UPDATE THIS to match your pod's label
+  namespaceSelector:
+    any: true
+  podMetricsEndpoints:
+  - targetPort: 8082
+    path: /metrics
+    interval: 15s

@@ -1,3 +1,0 @@
-kubectl exec -it <pod-name> -c prefill -- python3 -c "import torch; import torch_npu; print(f'NPU 0 (Logical): {torch.npu.memory_allocated(0) / 1024**3:.2f} GB used'); print(f'NPU 1 (Logical): {torch.npu.memory_allocated(1) / 1024**3:.2f} GB used')"
-curl -s http://localhost:8008/metrics | grep -E "vllm:gpu_cache_usage|vllm:gpu_prefix_cache_hit_rate"
-curl -s http://localhost:8008/metrics | grep -E "vllm:kv_cache_usage_perc|vllm:prefix_cache"
