@@ -54,3 +54,9 @@ Forwarding from [::1]:8010 -> 8085
 Handling connection for 8010
 E0819 21:46:59.870305 1317054 portforward.go:424] "Unhandled Error" err="an error occurred forwarding 8010 -> 8085: error forwarding port 8085 to pod 13e59771556fa9423a2016c6fbe6533c658c81010956663304d285e9a074e1d9, uid : failed to execute portforward in network namespace \"/var/run/netns/cni-b7066973-f23c-0328-3f7e-9f3cb8bce528\": failed to connect to localhost:8085 inside namespace \"13e59771556fa9423a2016c6fbe6533c658c81010956663304d285e9a074e1d9\", IPv4: dial tcp4 127.0.0.1:8085: connect: connection refused IPv6 dial tcp6 [::1]:8085: connect: connection refused "
 error: lost connection to pod
+python gen_profile.py ./result/qwen257_npu_fast.jsonl \
+  --hardware "huawei.com/Ascend910" \
+  --cost 1.0 \
+  --slo-ttft 200 \
+  --slo-tpot 50 \
+  -o "redis://aibrix-redis-master.aibrix-system.svc.cluster.local:6379/?model=Qwen-2.5-7B-Instruct"
