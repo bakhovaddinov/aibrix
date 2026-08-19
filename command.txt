@@ -73,3 +73,5 @@ python gen_profile.py "huawei.com/Ascend910" \
   --ttft 0.2 \
   --tpot 0.05 \
   -o "redis://localhost:6379/0?model=Qwen-2.5-7B-Instruct"
+
+kubectl exec -it deployment/aibrix-redis-master -n aibrix-system -- redis-cli get "aibrix:profile_Qwen-2.5-7B-Instruct_huawei.com/Ascend910"
