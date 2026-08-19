@@ -36,3 +36,14 @@ curl http://localhost:8008/v1/chat/completions \
     "max_tokens": 300,
     "temperature": 0.7
   }'
+
+
+bash benchmark.sh \
+  --model Qwen-2.5-7B-Instruct \
+  --input-start 128 \
+  --input-limit 2048 \
+  --output-start 128 \
+  --output-limit 1024 \
+  --rate-start 1 \
+  --rate-limit 8 \
+  -o ./result/qwen257_npu.jsonl
