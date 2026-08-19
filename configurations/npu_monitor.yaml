@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: npu-exporter # <--- UPDATE THIS to match your pod's label
+      app: app.kubernetes.io/managed-by=npu-operator,app=npu-exporter,controller-revision-hash=6479954dd7,helm.sh/chart=npu-operator-1.2.0,pod-template-generation=1 # <--- UPDATE THIS to match your pod's label
   namespaceSelector:
     any: true
   podMetricsEndpoints:
