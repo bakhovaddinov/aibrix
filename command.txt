@@ -62,3 +62,14 @@ python gen_profile.py "huawei.com/Ascend910" \
   --tpot 0.05 \
   -o ./result/qwen257_profile.json \
   -v
+
+
+\\push to redis
+
+python gen_profile.py "huawei.com/Ascend910" \
+  --benchmark ./result/qwen257_npu_fast.jsonl \
+  --cost 1.0 \
+  --percentile 90 \
+  --ttft 0.2 \
+  --tpot 0.05 \
+  -o "redis://localhost:6379/0?model=Qwen-2.5-7B-Instruct"
