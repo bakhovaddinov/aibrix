@@ -1,0 +1,7 @@
+kubectl exec -it deployment/aibrix-redis-master -n aibrix-system -- redis-cli RENAME "aibrix:profile_Qwen-2.5-7B-Instruct_huawei.com/Ascend910" "aibrix:profile_qwen-2.5-7b-instruct_huawei.com/Ascend910"
+
+kubectl get httproute -n aibrix-system
+
+curl -X POST http://localhost:8000/v1/chat/completions \
+-H "Content-Type: application/json" \
+-d '{"model": "qwen-2.5-7b-instruct", "messages": [{"role": "user", "content": "Hello! Please reply with a short confirmation."}]}'
