@@ -28,6 +28,11 @@ spec:
                 model.aibrix.ai/name: Qwen-2.5-7B-Instruct
                 model.aibrix.ai/port: "8008"
                 model.aibrix.ai/engine: vllm
+              annotations:
+                model.aibrix.ai/config: |
+                  {
+                    "lockedRoutingStrategy": "slo-least-load"
+                  }	
             spec:
               schedulerName: default-scheduler
               containers:

@@ -21,3 +21,4 @@ spec:
       path: /metrics/default/qwen257
       protocolType: http
       targetMetric: vllm:deployment_replicas
+      targetValue: "100"
