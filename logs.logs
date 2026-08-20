@@ -1,0 +1,21 @@
+Defaulted container "gateway-plugin" out of: gateway-plugin, init-c (init)
+I0820 08:28:54.021682       1 util.go:145] set AIBRIX_PREFIX_CACHE_KV_EVENT_SYNC_ENABLED: false
+I0820 08:28:54.021690       1 prefix_cache.go:240] "prefix cache router configuration" remote_tokenizer_requested=false kv_sync_requested=false
+I0820 08:28:54.021701       1 prefix_cache.go:301] "prefix_cache_configurations" tokenizer_type="character" remote_tokenizer_enabled=false kv_sync_enabled=false pod_running_request_imbalance_abs_count=16 matched_pods_running_requests_standard_deviation_factor=2
+I0820 08:28:54.021747       1 util.go:145] set AIBRIX_STATESYNC_ENABLED: false
+I0820 08:28:54.021759       1 main.go:181] "statesync disabled; set AIBRIX_STATESYNC_ENABLED=true to enable cross-replica state sync"
+I0820 08:28:54.021846       1 gateway.go:553] "Starting HTTP server" address=":8080"
+I0820 08:28:54.021858       1 main.go:187] Started HTTP server on :8080
+W0820 08:28:54.021863       1 util.go:101] environment variable OTEL_EXPORTER_OTLP_TRACES_ENDPOINT is not set, using default value: 
+W0820 08:28:54.021867       1 util.go:101] environment variable OTEL_EXPORTER_OTLP_ENDPOINT is not set, using default value: 
+I0820 08:28:54.021872       1 util.go:118] set AIBRIX_GRPC_MAX_MESSAGE_SIZE_BYTES: 4194304, using default value
+I0820 08:28:54.021911       1 main.go:216] starting gRPC server on :50052
+I0820 08:28:54.021923       1 main.go:224] GOMAXPROCS is: 2
+I0820 12:04:25.575671       1 gateway.go:170] "processing request" requestID="ddc9f90d-0ce9-478b-b2eb-52a5f8478ae9"
+I0820 12:19:58.960450       1 gateway.go:170] "processing request" requestID="cca71608-7f01-4f62-9a73-933a8316ac9b"
+E0820 12:19:58.961018       1 gateway_req_body.go:212] "model doesn't exist in cache, probably wrong model name" requestID="cca71608-7f01-4f62-9a73-933a8316ac9b" model="qwen-2.5-7b-instruct"
+I0820 12:25:55.260661       1 gateway.go:170] "processing request" requestID="abdaadc8-7a13-4b75-b486-cd2398270cb8"
+E0820 12:25:55.261600       1 gateway_req_body.go:212] "model doesn't exist in cache, probably wrong model name" requestID="abdaadc8-7a13-4b75-b486-cd2398270cb8" model="aibrix-reserved"
+I0820 13:00:00.016436       1 gateway.go:170] "processing request" requestID="5588a58c-3daf-4e25-b768-7ce95b39119d"
+I0820 13:03:00.523001       1 gateway.go:170] "processing request" requestID="148d4ee8-05dc-4163-9e96-25c1cc3b9be4"
+I0820 13:03:38.351584       1 gateway.go:170] "processing request" requestID="47e40bb5-6f41-40f0-a35c-6c5f14572c54"
