@@ -35,3 +35,21 @@ spec:
           namespace: default
           port: 8008
 EOF
+
+
+cat <<EOF | kubectl apply -f -
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: ReferenceGrant
+metadata:
+  name: aibrix-route-access
+  namespace: default
+spec:
+  from:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    namespace: aibrix-system
+  to:
+  - group: ""
+    kind: Service
+    name: qwen257
+EOF
