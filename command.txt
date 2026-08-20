@@ -106,3 +106,16 @@ curl -X POST http://localhost:8008/v1/chat/completions \
 -H "Content-Type: application/json" \
 -d '{"model": "qwen257", "messages": [{"role": "user", "content": "Are you online?"}]}'
 
+kubectl patch svc qwen257 -n default --type='merge' -p '{
+  "spec": {
+    "ports": [
+      {
+        "name": "http-inference",
+        "port": 8008,
+        "targetPort": 8008,
+        "protocol": "TCP",
+        "appProtocol": "http"
+      }
+    ]
+  }
+}'
