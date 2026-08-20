@@ -25,7 +25,7 @@ spec:
           template:
             metadata:
               labels:
-                model.aibrix.ai/name: Qwen-2.5-7B-Instruct
+                model.aibrix.ai/name: qwen257
                 model.aibrix.ai/port: "8008"
                 model.aibrix.ai/engine: vllm
               annotations:
@@ -45,7 +45,7 @@ spec:
                       --host 0.0.0.0 \
                       --port 8008 \
                       --tensor-parallel-size 2 \
-                      --served-model-name Qwen-2.5-7B-Instruct \
+                      --served-model-name qwen257 \
                       --trust-remote-code \
                       --max-model-len 32768
                   resources:
