@@ -5,3 +5,33 @@ kubectl get httproute -n aibrix-system
 curl -X POST http://localhost:8000/v1/chat/completions \
 -H "Content-Type: application/json" \
 -d '{"model": "qwen-2.5-7b-instruct", "messages": [{"role": "user", "content": "Hello! Please reply with a short confirmation."}]}'
+
+
+kubectl delete httproute qwen257-router -n aibrix-system
+
+cat <<EOF | kubectl apply -f -
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: qwen257-strict-router
+  namespace: aibrix-system
+spec:
+  parentRefs:
+    - name: aibrix-gateway
+      namespace: aibrix-system
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /v1/chat/completions
+        - path:
+            type: PathPrefix
+            value: /v1/completions
+        - path:
+            type: PathPrefix
+            value: /v1/models
+      backendRefs:
+        - name: qwen257
+          namespace: default
+          port: 8008
+EOF
