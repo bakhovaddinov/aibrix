@@ -75,3 +75,11 @@ python gen_profile.py "huawei.com/Ascend910" \
   -o "redis://localhost:6379/0?model=Qwen-2.5-7B-Instruct"
 
 kubectl exec -it deployment/aibrix-redis-master -n aibrix-system -- redis-cli get "aibrix:profile_Qwen-2.5-7B-Instruct_huawei.com/Ascend910"
+
+
+for i in {1..20}; do
+  curl -X POST http://localhost:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"model": "Qwen-2.5-7B-Instruct", "messages": [{"role": "user", "content": "Write a highly detailed, 10-page essay about Linux system programming and low-level memory optimizations."}]}' &
+done
+wait
