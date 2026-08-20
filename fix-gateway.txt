@@ -53,3 +53,7 @@ spec:
     kind: Service
     name: qwen257
 EOF
+
+
+kubectl label stormservice qwen257 model.aibrix.ai/port="8008" -n default --overwrite
+kubectl label pod -l storm-service-name=qwen257 model.aibrix.ai/port="8008" -n default --overwrite
