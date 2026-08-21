@@ -13,3 +13,6 @@
 {"time": "2026-08-21 12:28:58,395", "level": "INFO", "logger": "aibrix.gpu_optimizer.load_monitor", "message": "qwen257 scaled to minimum, total cost $inf. Detailed Configuration:[qwen257: 1($inf)]"}
 {"time": "2026-08-21 12:29:02,000", "level": "INFO", "logger": "aibrix.gpu_optimizer.load_monitor", "message": "qwen257 scaled to minimum, total cost $inf. Detailed Configuration:[qwen257: 1($inf)]"}
 {"time": "2026-08-21 12:29:12,000", "level": "INFO", "logger": "aibrix.gpu_optimizer.load_monitor", "message": "qwen257 scaled to minimum, total cost $inf. Detailed Configuration:[qwen257: 1($inf)]"}
+
+REDIS_POD=$(kubectl get pods -n aibrix-system -l app.kubernetes.io/component=redis -o jsonpath='{.items[0].metadata.name}')
+kubectl exec -it $REDIS_POD -n aibrix-system -- redis-cli keys "aibrix:profile*"
