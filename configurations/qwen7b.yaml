@@ -30,6 +30,7 @@ spec:
                 model.aibrix.ai/port: "8008"
                 model.aibrix.ai/engine: vllm
               annotations:
+                model.aibrix.ai/sidecar-injection: "true"
                 model.aibrix.ai/config: |
                   {
                     "lockedRoutingStrategy": "slo-least-load"

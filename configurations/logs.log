@@ -1,0 +1,15 @@
+kubectl logs -n aibrix-system deploy/aibrix-gpu-optimizer -f
+{"time": "2026-08-21 10:50:34,311", "level": "INFO", "logger": "aibrix.gpu_optimizer", "message": "Looking for deployments with model.aibrix.ai/name"}
+{"time": "2026-08-21 11:00:34,327", "level": "INFO", "logger": "aibrix.gpu_optimizer", "message": "Looking for deployments with model.aibrix.ai/name"}
+{"time": "2026-08-21 11:10:34,343", "level": "INFO", "logger": "aibrix.gpu_optimizer", "message": "Looking for deployments with model.aibrix.ai/name"}
+{"time": "2026-08-21 11:20:34,362", "level": "INFO", "logger": "aibrix.gpu_optimizer", "message": "Looking for deployments with model.aibrix.ai/name"}
+{"time": "2026-08-21 11:30:34,380", "level": "INFO", "logger": "aibrix.gpu_optimizer", "message": "Looking for deployments with model.aibrix.ai/name"}
+{"time": "2026-08-21 11:40:34,396", "level": "INFO", "logger": "aibrix.gpu_optimizer", "message": "Looking for deployments with model.aibrix.ai/name"}
+{"time": "2026-08-21 11:50:34,412", "level": "INFO", "logger": "aibrix.gpu_optimizer", "message": "Looking for deployments with model.aibrix.ai/name"}
+
+kubectl logs -n aibrix-system -l app.kubernetes.io/component=gpu-optimizer -f
+No resources found in aibrix-system namespace.
+
+kubectl get podautoscaler qwen257-prefill-autoscaler -w
+NAME                         MINPODS   MAXPODS   REPLICAS   STRATEGY   AGE
+qwen257-prefill-autoscaler   1         4         1          KPA        24h
