@@ -1,3 +1,15 @@
-kubectl label deployment qwen257 model.aibrix.ai/name=qwen257 model.aibrix.ai/port="8008" model.aibrix.ai/min_replicas="1" -n default
-kubectl patch podautoscaler qwen257-autoscaler -n default --type='merge' -p '{"spec":{"minReplicas":0}}'
-kubectl set env deployment/aibrix-gateway-plugins -n aibrix-system AIBRIX_GPU_OPTIMIZER_TRACING_FLAG="true"
+{"time": "2026-08-21 11:50:34,412", "level": "INFO", "logger": "aibrix.gpu_optimizer", "message": "Looking for deployments with model.aibrix.ai/name"}
+{"time": "2026-08-21 12:00:34,427", "level": "INFO", "logger": "aibrix.gpu_optimizer", "message": "Looking for deployments with model.aibrix.ai/name"}
+{"time": "2026-08-21 12:10:34,443", "level": "INFO", "logger": "aibrix.gpu_optimizer", "message": "Looking for deployments with model.aibrix.ai/name"}
+{"time": "2026-08-21 12:20:34,460", "level": "INFO", "logger": "aibrix.gpu_optimizer", "message": "Looking for deployments with model.aibrix.ai/name"}
+{"time": "2026-08-21 12:28:46,393", "level": "WARNING", "logger": "aibrix.gpu_optimizer.profile_reader", "message": "No profiles matching aibrix:profile_qwen257_* found in Redis"}
+{"time": "2026-08-21 12:28:46,393", "level": "WARNING", "logger": "aibrix.gpu_optimizer.load_monitor", "message": "No GPU profile found for default/qwen257. Optimizer will skip the GPU."}
+{"time": "2026-08-21 12:28:46,394", "level": "INFO", "logger": "aibrix.gpu_optimizer", "message": "New model monitor started for "qwen257". Deployment "default/qwen257" added."}
+{"time": "2026-08-21 12:28:46,394", "level": "INFO", "logger": "aibrix.gpu_optimizer.load_reader", "message": "No pre-existed load profile matching aibrix:qwen257_request_trace_* found in Redis"}
+{"time": "2026-08-21 12:28:46,394", "level": "INFO", "logger": "aibrix.gpu_optimizer.load_monitor", "message": "qwen257 scaled to minimum, total cost $inf. Detailed Configuration:[qwen257: 1($inf)]"}
+{"time": "2026-08-21 12:28:46,510", "level": "WARNING", "logger": "aibrix.gpu_optimizer.load_monitor", "message": "No GPU profile found for default/qwen257. Optimizer will skip the GPU."}
+{"time": "2026-08-21 12:28:46,524", "level": "WARNING", "logger": "aibrix.gpu_optimizer.load_monitor", "message": "No GPU profile found for default/qwen257. Optimizer will skip the GPU."}
+{"time": "2026-08-21 12:28:46,546", "level": "WARNING", "logger": "aibrix.gpu_optimizer.load_monitor", "message": "No GPU profile found for default/qwen257. Optimizer will skip the GPU."}
+{"time": "2026-08-21 12:28:58,395", "level": "INFO", "logger": "aibrix.gpu_optimizer.load_monitor", "message": "qwen257 scaled to minimum, total cost $inf. Detailed Configuration:[qwen257: 1($inf)]"}
+{"time": "2026-08-21 12:29:02,000", "level": "INFO", "logger": "aibrix.gpu_optimizer.load_monitor", "message": "qwen257 scaled to minimum, total cost $inf. Detailed Configuration:[qwen257: 1($inf)]"}
+{"time": "2026-08-21 12:29:12,000", "level": "INFO", "logger": "aibrix.gpu_optimizer.load_monitor", "message": "qwen257 scaled to minimum, total cost $inf. Detailed Configuration:[qwen257: 1($inf)]"}
