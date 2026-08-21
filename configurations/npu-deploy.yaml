@@ -106,5 +106,11 @@ spec:
     name: qwen257
   minReplicas: 1
   maxReplicas: 4
-  scalingStrategy:
-    type: KPA
+  scalingStrategy: KPA
+  metricsSources:
+    - endpoint: aibrix-gpu-optimizer.aibrix-system.svc.cluster.local:8080
+      metricSourceType: domain
+      path: /metrics/default/qwen257
+      protocolType: http
+      targetMetric: vllm:deployment_replicas
+      targetValue: "100"
